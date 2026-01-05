@@ -1,0 +1,186 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict LSSdXi6u7yfa1oOiW0xmdpcF6odHcxWTBSMrXV4r0hOl1gIhXLFFWnuYk836QYW
+
+-- Dumped from database version 15.14
+-- Dumped by pg_dump version 18.0
+
+-- Started on 2026-01-05 17:49:50
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3181 (class 0 OID 16398)
+-- Dependencies: 215
+-- Data for Name: curso; Type: TABLE DATA; Schema: public; Owner: svc_banca_app
+--
+
+COPY public.curso (id_curso, activo, descripcion, fecha_creacion, titulo, url_contenido, id_modulo) FROM stdin;
+1	t	Bases del desarrollo web	2026-01-03 01:39:02.813864	Introducción a HTML y CSS	\N	1
+2	t	Lógica y programación frontend	2026-01-03 01:39:02.813864	Fundamentos de JavaScript	\N	1
+3	t	Principios y buenas prácticas	2026-01-03 01:39:02.813864	REST APIs desde cero	\N	2
+4	t	Consumo de APIs	2026-01-03 01:39:02.813864	Integraciones con servicios externos	\N	2
+6	t	Contenedores y despliegue	2026-01-03 01:39:02.813864	Despliegue de aplicaciones con Docker	\N	3
+8	t	Procesos ETL	2026-01-03 01:39:02.813864	ETL con herramientas modernas	\N	4
+9	t	Conceptos fundamentales	2026-01-03 20:34:47.40718	Introducción a Cloud Computing	\N	3
+10	t	Pipeline de datos	2026-01-03 20:35:28.427464	Introducción a Data Engineering	\N	4
+11	t	prueba	2026-01-03 22:09:58.122604	prueba	\N	1
+12	t	Bases del desarrollo frontend moderno	2026-01-05 20:46:44.282289	Fundamentos de HTML, CSS y JavaScript	\N	1
+13	t	Construcción de aplicaciones SPA	2026-01-05 20:46:44.282289	Angular: arquitectura y componentes	\N	1
+14	t	Desarrollo backend con Spring	2026-01-05 20:46:44.282289	Spring Boot: APIs empresariales	\N	1
+15	t	Modelado y acceso a datos	2026-01-05 20:46:44.282289	Persistencia con JPA e Hibernate	\N	1
+16	t	Diseño de APIs robustas	2026-01-05 20:47:30.834279	Principios REST y buenas prácticas	\N	2
+17	t	Autenticación y autorización de servicios	2026-01-05 20:47:30.834279	Seguridad en APIs (JWT y OAuth2)	\N	2
+18	t	Integración frontend-backend	2026-01-05 20:47:30.834279	Consumo de APIs con Angular	\N	2
+19	t	Estandarización y testing de APIs	2026-01-05 20:47:30.834279	Documentación con OpenAPI/Swagger	\N	2
+20	t	IaaS, PaaS y SaaS	2026-01-05 20:47:41.09728	Fundamentos de arquitectura en la nube	\N	3
+22	t	Automatización de despliegues	2026-01-05 20:47:41.09728	CI/CD con GitHub Actions	\N	3
+23	t	Buenas prácticas cloud	2026-01-05 20:47:41.09728	Despliegue en Render y ambientes productivos	\N	3
+24	t	Diseño eficiente de bases de datos	2026-01-05 20:47:51.393355	Modelado de datos relacional	\N	4
+25	t	Transformación y carga de información	2026-01-05 20:47:51.393355	ETL y procesamiento de datos	\N	4
+26	t	Consultas de alto rendimiento	2026-01-05 20:47:51.393355	SQL avanzado y optimización	\N	4
+27	t	Procesamiento distribuido y escalable	2026-01-05 20:47:51.393355	Introducción a Big Data	\N	4
+21	t	Empaquetado y despliegue de aplicaciones	2026-01-05 20:47:41.09728	Docker y contenedores	https://estaeslaurldelcontenidodelcurso.com	3
+\.
+
+
+--
+-- TOC entry 3183 (class 0 OID 16406)
+-- Dependencies: 217
+-- Data for Name: insignia; Type: TABLE DATA; Schema: public; Owner: svc_banca_app
+--
+
+COPY public.insignia (id_insignia, descripcion, imagen_url, nombre) FROM stdin;
+1	Completaste tu primer curso exitosamente	🎓	Curso Completado
+2	Completa 3 cursos	📚	Aprendiz Constante
+3	Completa 10 cursos	🏆	Maestro del Conocimiento
+4	Inicia 5 cursos en una semana	🚀	Iniciador Rápido
+5	Completa un módulo completo	⭐	Perfeccionista
+\.
+
+
+--
+-- TOC entry 3185 (class 0 OID 16414)
+-- Dependencies: 219
+-- Data for Name: modulo; Type: TABLE DATA; Schema: public; Owner: svc_banca_app
+--
+
+COPY public.modulo (id_modulo, descripcion, nombre) FROM stdin;
+1	Desarrollo frontend y backend	Fullstack
+2	Diseño y consumo de servicios REST	APIs e Integraciones
+3	Arquitectura y despliegue en la nube	Cloud
+4	Procesamiento y análisis de datos	Data Engineer
+\.
+
+
+--
+-- TOC entry 3187 (class 0 OID 16422)
+-- Dependencies: 221
+-- Data for Name: progreso_curso; Type: TABLE DATA; Schema: public; Owner: svc_banca_app
+--
+
+COPY public.progreso_curso (id_progreso, estado, fecha_completado, fecha_inicio, id_curso, id_usuario) FROM stdin;
+10	EN_PROGRESO	\N	2026-01-03 20:30:04.551954	8	1
+8	COMPLETADO	2026-01-03 21:19:41.985714	2026-01-03 19:45:57.03649	1	1
+11	COMPLETADO	2026-01-03 21:55:58.248155	2026-01-03 21:47:43.388679	4	1
+1	EN_PROGRESO	\N	\N	1	2
+2	EN_PROGRESO	\N	\N	2	2
+3	EN_PROGRESO	\N	\N	3	2
+12	EN_PROGRESO	\N	2026-01-05 20:33:24.074269	9	1
+13	COMPLETADO	2026-01-05 21:31:29.323322	2026-01-05 21:27:54.273518	11	1
+14	COMPLETADO	2026-01-05 21:39:55.071416	2026-01-05 21:39:21.445619	16	1
+9	COMPLETADO	2026-01-05 21:53:20.644426	2026-01-03 19:46:18.616607	2	1
+15	COMPLETADO	2026-01-05 22:02:14.524269	2026-01-05 22:01:38.927408	19	1
+\.
+
+
+--
+-- TOC entry 3189 (class 0 OID 16429)
+-- Dependencies: 223
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: svc_banca_app
+--
+
+COPY public.usuario (id_usuario, email, fecha_creacion, nombre, password_hash, rol, username) FROM stdin;
+1	admin@demo.com	2026-01-03 01:38:30.50627	Administrador Demo	admin_123	ADMIN	admin_demo
+2	user@demo.com	2026-01-03 01:38:30.50627	Usuario Demo	user_123	USER	user_demo
+\.
+
+
+--
+-- TOC entry 3190 (class 0 OID 16436)
+-- Dependencies: 224
+-- Data for Name: usuario_insignia; Type: TABLE DATA; Schema: public; Owner: svc_banca_app
+--
+
+COPY public.usuario_insignia (id_insignia, id_usuario, fecha_otorgada) FROM stdin;
+1	1	2026-01-03 21:19:42.08196
+4	1	2026-01-05 20:33:24.334309
+2	1	2026-01-05 21:31:44.663084
+\.
+
+
+--
+-- TOC entry 3197 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: curso_id_curso_seq; Type: SEQUENCE SET; Schema: public; Owner: svc_banca_app
+--
+
+SELECT pg_catalog.setval('public.curso_id_curso_seq', 27, true);
+
+
+--
+-- TOC entry 3198 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: insignia_id_insignia_seq; Type: SEQUENCE SET; Schema: public; Owner: svc_banca_app
+--
+
+SELECT pg_catalog.setval('public.insignia_id_insignia_seq', 5, true);
+
+
+--
+-- TOC entry 3199 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: modulo_id_modulo_seq; Type: SEQUENCE SET; Schema: public; Owner: svc_banca_app
+--
+
+SELECT pg_catalog.setval('public.modulo_id_modulo_seq', 4, true);
+
+
+--
+-- TOC entry 3200 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: progreso_curso_id_progreso_seq; Type: SEQUENCE SET; Schema: public; Owner: svc_banca_app
+--
+
+SELECT pg_catalog.setval('public.progreso_curso_id_progreso_seq', 15, true);
+
+
+--
+-- TOC entry 3201 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: svc_banca_app
+--
+
+SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 2, true);
+
+
+-- Completed on 2026-01-05 17:50:01
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict LSSdXi6u7yfa1oOiW0xmdpcF6odHcxWTBSMrXV4r0hOl1gIhXLFFWnuYk836QYW
+
