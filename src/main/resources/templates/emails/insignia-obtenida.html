@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Insignia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #fffbeb;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .insignia-box {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border: 3px solid #f59e0b;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .badge-icon {
+            font-size: 80px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #f59e0b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏆 ¡Nueva Insignia Desbloqueada!</h1>
+    </div>
+    <div class="content">
+        <h2>¡Increíble, <span th:text="${nombreUsuario}">Usuario</span>!</h2>
+        
+        <div class="insignia-box">
+            <div class="badge-icon">🏆</div>
+            <h3 style="color: #f59e0b; font-size: 24px; margin: 10px 0;" th:text="${nombreInsignia}">
+                Nombre Insignia
+            </h3>
+            <p style="color: #666;" th:text="${descripcionInsignia}">
+                Descripción de la insignia
+            </p>
+        </div>
+        
+        <p>Has alcanzado un nuevo hito en tu camino de aprendizaje. Esta insignia es el reconocimiento a tu esfuerzo y dedicación.</p>
+        
+        <p><strong>¿Sabías que...?</strong></p>
+        <ul>
+            <li>Puedes ver todas tus insignias en tu perfil</li>
+            <li>Cada insignia representa un logro único</li>
+            <li>Colecciona más insignias completando más cursos</li>
+        </ul>
+        
+        <a href="http://localhost:4200/perfil" class="button">Ver Mis Insignias</a>
+        
+        <p style="margin-top: 30px;">¡Sigue coleccionando!</p>
+        <p><strong>El equipo de Core Banca</strong></p>
+    </div>
+</body>
+</html>

@@ -11,6 +11,7 @@ import com.challenge.backend.UsuarioInsignia.entity.UsuarioInsignia;
 import com.challenge.backend.UsuarioInsignia.service.UsuarioInsigniaService;
 import com.challenge.backend.curso.entity.Curso;
 import com.challenge.backend.curso.repository.CursoRepository;
+import com.challenge.backend.email.EmailService;
 import com.challenge.backend.usuario.entity.Usuario;
 import com.challenge.backend.usuario.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,7 @@ public class ProgresoCursoService {
     private final CursoRepository cursoRepository;
     private final UsuarioInsigniaService usuarioInsigniaService;
     private final InsigniaRepository insigniaRepository;
+    private final EmailService emailService;
 
     public List<ProgresoCursoDTO> listarProgresosPorUsuario(Integer idUsuario) {
         List<ProgresoCurso> progresos = progresoCursoRepository.findByUsuarioId(idUsuario);
@@ -104,11 +106,15 @@ public class ProgresoCursoService {
                     ProgresoCurso progresoGuardado = progresoCursoRepository.save(progreso);
                     
                     try {
-                        // Verificar todas las insignias relacionadas con completar cursos
+                        // Enviar email de curso completado ⬅️ AGREGAR
+                        emailService.enviarNotificacionCursoCompletado(
+                            progreso.getUsuario(),
+                            progreso.getCurso().getTitulo()
+                        );
+                        
                         verificarTodasLasInsignias(progreso.getUsuario());
                     } catch (Exception e) {
-                        System.err.println("Error al verificar insignias: " + e.getMessage());
-                        e.printStackTrace();
+                        System.err.println("Error: " + e.getMessage());
                     }
                     
                     return progresoGuardado;
@@ -257,7 +263,13 @@ public class ProgresoCursoService {
                             .build();
                     
                     usuarioInsigniaService.otorgarInsignia(usuarioInsignia);
-                    System.out.println("✅ Insignia otorgada: " + insignia.getNombre() + " a " + usuario.getNombre());
+                    
+                    // Enviar email de insignia 
+                    emailService.enviarNotificacionInsignia(
+                        usuario,
+                        insignia.getNombre(),
+                        insignia.getDescripcion()
+                    );
                 }
             }
         } catch (Exception e) {
